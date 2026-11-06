@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>·</title>
+<style>
+body{background:#080808;color:#9aa0a6;font:15px/1.7 monospace;padding:22px}
+input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
+border:1px solid #262626;border-radius:6px;padding:13px;font:inherit;margin:6px 0}
+#m{color:#7a4a4a;min-height:1.4em}
+</style>
+<p>本档案与观察对象共用一份。</p>
+<p>请输入它们的关系。</p>
+<input id="p" placeholder="……">
+<button onclick="go()">提交</button>
+<p id="m"></p>
+<script>
+function go(){
+  var v=document.getElementById('p').value.replace(/\s/g,'').toLowerCase();
+  if(v==='samefile'){location.href='../subject/';}
+  else{document.getElementById('m').textContent='不符。';}
+}
+</script>
