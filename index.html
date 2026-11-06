@@ -1,4 +1,36 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<body style="background:#080808;color:#9aa0a6;font:16px monospace;padding:26px">
-019
+
+<html lang="zh">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>019</title>
+<style>
+  html,body{height:100%;margin:0}
+  body{background:#080808;color:#9aa0a6;
+    display:flex;align-items:center;justify-content:center;
+    font:16px/1.9 -apple-system,"PingFang SC",sans-serif;
+    padding:26px;box-sizing:border-box;-webkit-text-size-adjust:100%}
+  .box{max-width:21em}
+  p{margin:0 0 13px;opacity:0;animation:in .8s ease forwards}
+  p:nth-of-type(1){animation-delay:.4s}
+  p:nth-of-type(2){animation-delay:1.2s}
+  p:nth-of-type(3){animation-delay:2.0s}
+  p:nth-of-type(4){animation-delay:2.8s}
+  p:nth-of-type(5){animation-delay:3.6s}
+  @keyframes in{to{opacity:1}}
+  .dim{color:#0d0d0d}
+</style>
+<div class="box">
+  <p>您已进入收容区域 C。</p>
+  <p>本页面生成于您抵达前 0.4 秒。</p>
+  <p>这里是第 <span id="c">7</span> 位访客。</p>
+  <p>您不是第一个。</p>
+  <p class="dim">观察员 019 的签字栏是空的。因为没人签。</p>
+</div>
+<script>
+(function(){
+  var n = parseInt(localStorage.getItem('k7v') || '0', 10) + 1;
+  localStorage.setItem('k7v', n);
+  document.getElementById('c').textContent = 6 + n;
+})();
+</script>
