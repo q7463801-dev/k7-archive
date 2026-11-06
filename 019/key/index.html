@@ -1,36 +1,23 @@
 <!doctype html>
-<meta "noindex,nofollow"=八点>
-<元 名称=视港 内容=widd=devicet-width,initial-scale=1>
-<元 名称=机器人 内容=noindex,nofollow>
-<titlesolid·</标题>
-<风格>
-  身体{背景:#080808;颜色:9aa0a6;字体:15像素/1.7 单空间;保证金:0;衬垫:18像素}
-  输入,选择,按钮{宽度:100%;箱体化:边框;背景:#101010;颜色:#c9c9c9;
-    边界:1像素 固态 #262626;border-radius:6px;padding:13px;font:inherit;margin:6px 0}
-  .r{display:flex;gap:8px}
-  pre{white-space:pre-wrap;word-break:break-all;color:#7f97a6;min-height:2.5em}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>·</title>
+<style>
+body{background:#080808;color:#9aa0a6;font:16px/1.7 monospace;padding:20px}
+input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
+border:1px solid #262626;border-radius:6px;padding:13px;font:inherit;margin:6px 0}
+pre{white-space:pre-wrap;color:#7f97a6}
 </style>
-div输入 id=t 占位符=输入>
-<迪夫 classoptionr>
-  <选择 id=k>
-    <选项>1</选项><选项>2</选项><选项 被选中>3</选项>
-    <选项>5</选项><选项>7</选项><option/[a-z]/gi13</选项>
-  </选择>
-  <按钮 单击="去吧(1)">正向</按钮>
-  <按钮 单击="去吧(-1)">反</按钮>
-</迪夫>
-<前 id=o></前>
-<脚本>
-函数 caesar(s,k){
-  返回 s.替换(/[a-z]/gi,c=>{
-    const b = c<='Z'?65:97;
+<input id="t" placeholder="输入">
+<button onclick="go(-3)">反向 3</button>
+<button onclick="go(3)">正向 3</button>
+<pre id="o"></pre>
+<script>
+function go(k){
+  var s=document.getElementById('t').value;
+  document.getElementById('o').textContent=s.replace(/[a-z]/gi,function(c){
+    var b=c<='Z'?65:97;
     return String.fromCharCode(((c.charCodeAt(0)-b+k)%26+26)%26+b);
   });
 }
-function go(d){
-  const k = d*parseInt(document.getElementById('k').value,10);
-  document.getElementById('o').textContent =
-    caesar(document.getElementById('t').value,k) +
-    '\n\n[shift ' + (d>0?'+':'-') + Math.abs(k) + ']';
-}
-    </script>
+</script>
