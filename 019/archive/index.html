@@ -1,0 +1,72 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>K7 / 档案网</title>
+<style>
+body{background:#080808;color:#9aa0a6;font:15px/1.8 monospace;
+padding:22px;box-sizing:border-box}
+h3{font-size:14px;font-weight:normal;color:#c8ccd0;margin:26px 0 8px;
+letter-spacing:.18em;border-bottom:1px solid #161616;padding-bottom:6px}
+a{color:#9aa0a6;text-decoration:none;border-bottom:1px solid #1c1c1c}
+p{margin:0 0 7px}
+.dim{color:#0d0d0d}
+.dim a{color:#0d0d0d;border-bottom:1px solid #0d0d0d}
+.s{font-size:12px;color:#666c72;letter-spacing:.1em}
+input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
+border:1px solid #262626;border-radius:6px;padding:12px;font:inherit;margin:6px 0}
+pre{white-space:pre-wrap;color:#7f97a6;background:#0c0c0c;
+padding:12px;border:1px solid #181818;min-height:1.4em;margin:8px 0 0}
+</style>
+
+<p style="color:#c8ccd0;letter-spacing:.3em">K7 档案网</p>
+<p class="s">内部检索 · 未编 019</p>
+
+<h3>档案</h3>
+<p><a href="/k7-archive/019/gap/?n=001">001 温度</a></p>
+<p><a href="/k7-archive/019/gap/?n=002">002 时间差</a></p>
+<p><a href="/k7-archive/019/gap/?n=003">003 中断</a></p>
+<p><a href="/k7-archive/019/gap/?n=004">004 消耗</a></p>
+<p><a href="/k7-archive/019/gap/?n=005">005 监控</a></p>
+<p><a href="/k7-archive/019/gap/?n=006">006 交接</a></p>
+<p><a href="/k7-archive/019/gap/?n=007">007 体检</a></p>
+<p><a href="/k7-archive/019/gap/?n=008">008 ——</a></p>
+
+<h3>已解析</h3>
+<p>C 区 · 交接台正上方 · 机位 C</p>
+<p>04:11 开始，06:52 终止</p>
+<p>其间 2 小时 41 分，其中 2 小时 40 分 19 秒为空</p>
+<p>019 在岗，与观察对象共用一份档案</p>
+<p>A 侧两次未签</p>
+
+<h3>工具 · 位移</h3>
+<p class="s">按原位移反向输入，负数即反解</p>
+<input id="t" placeholder="粘入要解的文本">
+<input id="k" value="-3" inputmode="numeric">
+<button onclick="go()">应用</button>
+<pre id="o"></pre>
+
+<h3>区</h3>
+<p><a href="/k7-archive/019/lock/">LOCK</a></p>
+<p><a href="/k7-archive/019/subject/">SUBJECT</a></p>
+<p><a href="/k7-archive/019/b-zone/">B 区</a></p>
+
+<h3>外部载体</h3>
+<p>B 站 · 003 记录 <span class="s">（站外）</span></p>
+
+<h3></h3>
+<p><a href="/k7-archive/019/log/">019 索引</a>　<a href="/k7-archive/">返回</a></p>
+
+<p class="dim">未归档缺口由本网代填。缺口不填，是它自己走的。</p>
+
+<script>
+function go(){
+  var s=document.getElementById('t').value;
+  var k=parseInt(document.getElementById('k').value,10);
+  if(isNaN(k)){document.getElementById('o').textContent='位移无效。';return;}
+  document.getElementById('o').textContent=s.replace(/[a-z]/gi,function(c){
+    var b=c<='Z'?65:97;
+    return String.fromCharCode(((c.charCodeAt(0)-b+k)%26+26)%26+b);
+  });
+}
+</script>
