@@ -6,12 +6,17 @@
 body{background:#080808;color:#9aa0a6;font:16px/1.7 monospace;padding:20px}
 input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
 border:1px solid #262626;border-radius:6px;padding:13px;font:inherit;margin:6px 0}
-pre{white-space:pre-wrap;color:#7f97a6}
+pre{white-space:pre-wrap;color:#7f97a6;min-height:1.4em}
+a{color:#7f97a6;text-decoration:none;border-bottom:1px solid #1c1c1c}
+.dim{color:#0d0d0d}
+.dim a{color:#0d0d0d;border-bottom:1px solid #0d0d0d}
 </style>
 <input id="t" placeholder="输入">
 <button onclick="go(-3)">反向 3</button>
 <button onclick="go(3)">正向 3</button>
 <pre id="o"></pre>
+<p><a href="/k7-archive/019/archive/">K7 档案网</a>　位移可自定，工具在那边。</p>
+<p class="dim"><a href="/k7-archive/019/archive/">这边只有三档</a></p>
 <script>
 function go(k){
   var s=document.getElementById('t').value;
