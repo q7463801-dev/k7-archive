@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>·</title>
+<style>
+body{background:#080808;color:#9aa0a6;font:15px/1.7 monospace;padding:22px}
+input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
+border:1px solid #262626;border-radius:6px;padding:13px;font:inherit;margin:6px 0}
+#m{color:#7a4a4a;min-height:1.4em}
+</style>
+<p>该路径不在本区档案内。</p>
+<p style="color:#0d0d0d">B 区有自己的记录。</p>
+<p>进入 B 区需填写 003 记录的时长。</p>
+<input id="p" placeholder="……">
+<button onclick="go()">提交</button>
+<p id="m"></p>
+<script>
+function go(){
+  var v=document.getElementById('p').value.replace(/\s/g,'').toLowerCase();
+  var m=document.getElementById('m');
+  if(v==='241'){location.href='r/';}
+  else if(v==='161'){m.textContent='换算错误。照原样抄。';}
+  else{m.textContent='不符。';}
+}
+</script>
