@@ -1,0 +1,131 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>019</title>
+<style>
+body{background:#080808;color:#9aa0a6;font:15px/1.85 monospace;
+padding:24px;box-sizing:border-box;max-width:520px;margin:0 auto}
+h2{font-size:16px;font-weight:normal;color:#c8ccd0;letter-spacing:.16em;
+margin:0 0 20px;border-bottom:1px solid #161616;padding-bottom:10px}
+p{margin:0 0 9px}
+pre{white-space:pre-wrap;font:inherit;margin:0 0 14px;color:#7f97a6}
+a{color:#7f97a6;text-decoration:none;border-bottom:1px solid #1c1c1c}
+hr{border:0;border-top:1px solid #141414;margin:22px 0}
+.dim{color:#0d0d0d}
+.dim a{color:#0d0d0d;border-bottom:1px solid #0d0d0d}
+.s{font-size:12px;color:#5f666c;letter-spacing:.1em}
+input,button{width:100%;box-sizing:border-box;background:#101010;color:#ccc;
+border:1px solid #262626;border-radius:6px;padding:12px;font:inherit;margin:6px 0}
+#m{color:#7a4a4a;min-height:1.3em}
+</style>
+<div id="w"></div>
+<script>
+var D={
+"001":{t:"001 温度",
+b:[["pre","记录点：C 区，交接台。\n\n04:02  20.0\n04:11  20.4\n04:30  20.4\n06:51  20.4\n06:52  20.0"],
+["p","恒定 20.0 的结构。只有那两小时四十一分，多了 0.4。"],
+["p","0.4 不是温度。是有人在里面。"],
+["p","人不会让房间升温 0.4。会的是那种不该有体温的东西。"]],
+d:"004 记了它吃掉多少。",
+x:[["002","002 时间差"],["004","004 消耗"],["005","005 监控"]]},
+
+"002":{t:"002 时间差",
+b:[["pre","两台钟。一台在交接台上，一台砌在墙里。\n\n台上  04:11 → 06:52\n墙里  04:11 → 06:51:41\n\n差 19 秒。"],
+["p","墙里的钟比台上的慢 19 秒，而且只慢那一回。"],
+["p","19 秒在墙上，不在台上。所以少的不是时间。"]],
+d:"006 要的正是这 19 秒。",
+x:[["001","001 温度"],["005","005 监控"],["006","006 交接"]]},
+
+"003":{t:"003 中断",
+b:[["pre","中断于 06:52。\n中断不是故障。\n中断是有人按的。"],
+["p","按下的是 A 侧。按完就走，没有签。"],
+["p","A 侧这一趟的时长，记在 B 站 003 那条里。"],
+["p","本区不留那段数。B 区留。"]],
+d:"B 区有自己的记录。",
+x:[["b-zone","B 区记录"],["006","006 交接"],["005","005 监控"]]},
+
+"004":{t:"004 消耗",
+b:[["pre","时段  04:11 — 06:52\n用量  正常的 1.004 倍\n多出  0.4%"],
+["p","多出来的 0.4%，与 001 的 0.4 同源。"],
+["p","它没动，没走，没说话。它只是在那里呼吸。"],
+["p","两小时四十一分。呼吸的用量不该记在档案上。"]],
+d:"呼吸的，在 007 里有一份体检。",
+x:[["001","001 温度"],["007","007 体检"],["005","005 监控"]]},
+
+"005":{t:"005 监控",
+b:[["pre","机位  C 区，交接台正上方\n\n04:11:07  画面开始\n04:11:07  台前无人\n04:11:12  仍无人\n04:11:40  仍无人"],
+["pre","（04:11:40 — 06:51:59  无记录）"],
+["pre","06:52:00  画面终止"],
+["p","整段 2 小时 41 分，其中 2 小时 40 分 19 秒为空。"],
+["p","不需要交接的时段，机位不该开。"],
+["p","机位不是我开的。"]],
+d:"006 交接。钥匙不在本区。",
+x:[["002","002 时间差"],["006","006 交接"],["005","005 原文"]]},
+
+"006":{t:"006 交接",
+b:[["p","交接记录应当有两个人。"],
+["pre","04:11  A 侧到场   签字栏：空\n06:52  A 侧离场   签字栏：空"],
+["p","交接从未成立。"],
+["p","真正要交接的不是档案，是值班的那个人。"],
+["p","他不来，所以没人签。"]],
+d:"019 的签字栏，与它的同一份。",
+x:[["007","007 体检"],["subject","SUBJECT"],["002","002 时间差"]]},
+
+"007":{t:"007 体检",
+b:[["pre","对象  019\n体温  20.0\n脉搏  ——\n心电  直线，持续 2 小时 41 分"],
+["p","直线不是死亡。"],
+["p","直线是待机。"],
+["p","2 小时 41 分，它一直待机，而房间里一直有 0.4。"]],
+d:"008 的编号，是它自己填的。",
+x:[["004","004 消耗"],["008","008 ——"],["005","005 监控"]]},
+
+"008":{t:"008 ——",
+b:[["p","标题留空。"],
+["p","本页没有编号。"],
+["p","写下这页的人，编号后来变成了 019。"],
+["p","再后来，他坐到了交接台前面。"]],
+d:"LOCK 要的是你和它的关系。",
+x:[["lock","LOCK"],["subject","SUBJECT"],["007","007 体检"]]}
+};
+
+function L(h,t){return '<a href="'+h+'">'+t+'</a>';}
+
+function render(n){
+  var w=document.getElementById('w');
+  var e=D[n];
+  if(!e){
+    w.innerHTML='<h2>·</h2><p>该条不在本区档案内。</p><p>'+L('/k7-archive/019/archive/','K7 档案网')+'</p>';
+    return;
+  }
+  if(n==='006' && !sessionStorage.getItem('k7six')){
+    w.innerHTML='<h2>006 交接</h2><p>本条需先对出 002 少的那个数。</p>'+
+      '<input id="p" placeholder="……" inputmode="numeric"><button onclick="chk()">提交</button><p id="m"></p>'+
+      '<hr><p>'+L('/k7-archive/019/archive/','档案网')+'　'+L('/k7-archive/019/e/?n=002','002 时间差')+'</p>';
+    return;
+  }
+  var h='<h2>'+e.t+'</h2>';
+  for(var i=0;i<e.b.length;i++){
+    h+='<'+e.b[i][0]+'>'+e.b[i][1]+'</'+e.b[i][0]+'>';
+  }
+  h+='<p class="dim">'+e.d+'</p><hr><p>';
+  for(var j=0;j<e.x.length;j++){
+    var u=e.x[j][0];
+    var href=(u==='lock'||u==='subject'||u==='b-zone')
+      ? '/k7-archive/019/'+u+'/' : '/k7-archive/019/e/?n='+u;
+    if(u==='005') href='/k7-archive/019/005/';
+    h+=L(href,e.x[j][1])+'　';
+  }
+  h+='</p><p>'+L('/k7-archive/019/archive/','K7 档案网')+'　'+L('/k7-archive/019/log/','019 索引')+'</p>';
+  w.innerHTML=h;
+}
+
+function chk(){
+  var v=document.getElementById('p').value.replace(/\s/g,'');
+  if(v==='19'){sessionStorage.setItem('k7six','1');render('006');}
+  else{document.getElementById('m').textContent='不符。';}
+}
+
+var q=(new URLSearchParams(location.search).get('n')||'001').trim();
+render(q);
+</script>
